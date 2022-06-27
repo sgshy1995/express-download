@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>森普健康文件系统</title>
+  </head>
+  <body style="padding: 30px;">
+    <h1 style="font-size: 32px;">欢迎来到 森普健康 测试站点</h1>
+    <h1 style="font-size: 32px;">请选择下载文件：</h1>
+    <% if(files.length>0) {%>
+        <table border="1">
+            <tr>
+                <th style="font-size: 24px;">文件名</th>
+                <th style="font-size: 24px;">创建日期</th>
+                <th style="font-size: 24px;">大小</th>
+                <th style="font-size: 24px;">操作</th>
+            </tr>
+            <% files.forEach(function(file){ %>
+                <tr>
+                    <td style="padding: 0 24px;font-size: 24px;"><%- file.filename %></td>
+                    <td style="padding: 0 24px;font-size: 24px;"><%- file.ctime %></td>
+                    <td style="padding: 0 24px;font-size: 24px;"><%- file.kbsize %> KB</td>
+                    <td style="padding: 0 24px;font-size: 24px;"><a href="/files/download/<%- file.filename %>" target="_blank" download>下载</a></td>
+                </tr>
+            <%})%>
+        </table>
+    <%} else {%>
+    <p style="font-size: 26px;">没有可下载文件, 请联系管理员</p>
+    <%}%>
+  </body>
+</html>
